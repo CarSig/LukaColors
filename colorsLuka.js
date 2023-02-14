@@ -11,10 +11,10 @@ submit.addEventListener("click", (e) => {
     words.forEach((word) => {
 
         const div1Name = `color${word.id}a`;
-        const div2Name = `color${word.id}b`;
+
         const wordValue = word.value;
         const colors = wordToNumber(wordValue);
-        renderColors(colors.firstColor, colors.secondColor, div1Name, div2Name);
+        renderColors(colors.firstColor, colors.secondColor, div1Name, wordValue);
     })
 });
 
@@ -73,11 +73,23 @@ const wordToNumber = (word) => {
 // function that takes two colors and  updates the divs with the colors
 
 
-function renderColors(firstColor, secondColor, div1, div2) {
-    const div1Name = document.getElementById(div1);
-    const div2Name = document.getElementById(div2);
+
+function renderColors(firstColor, secondColor, div, word) {
+    const div1Name = document.getElementById(div);
     div1Name.style.backgroundColor = firstColor;
-    div2Name.style.backgroundColor = secondColor;
+    let firstTwoLetters = word[0] + word[1];
+    let secondTwoLetters = word[2] + word[3];
+    div1Name.innerHTML = `<div>${firstTwoLetters}</div><div>${secondTwoLetters}</div>`;
+
+
+    div1Name.style.textAlign = "center";
+
+
+    div1Name.style.fontSize = "2rem";
+    div1Name.style.color = secondColor;
+
+
+
 }
 
 
